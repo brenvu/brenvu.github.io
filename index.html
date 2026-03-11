@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brendon Vu — IT & Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:#f7f0e3;--bg2:#efe6d4;--surface:#e8dcc8;--border:#d4c8b0;--border2:#b8a888;
+      --ink:#1e1610;--ink2:#3a2c1e;--ink3:#6e5c44;--ink4:#9e8c6e;
+      --red:#c0281a;--red2:#9a1e10;--red-soft:#f2e0dc;
+      --sans:'Fraunces',serif;--mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink2);font-family:var(--mono);font-size:14px;line-height:1.7;overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:0 4rem;height:56px;display:flex;align-items:center;justify-content:space-between;background:rgba(247,240,227,0.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:var(--sans);font-size:1.1rem;font-weight:700;color:var(--ink);}
+    .nav-logo span{color:var(--red);}
+    .nav-links{display:flex;gap:1.5rem;list-style:none;}
+    .nav-links a{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--ink3);transition:color 0.2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--red);transform:scaleX(0);transition:transform 0.2s;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-links a:hover::after{transform:scaleX(1);}
+    section{max-width:1000px;margin:0 auto;padding:6rem 4rem;}
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:90px;}
+    .hero-eyebrow{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.75rem;}
+    .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--red);}
+    h1{font-family:var(--sans);font-size:clamp(3.5rem,9vw,7rem);font-weight:900;line-height:0.95;color:var(--ink);letter-spacing:-0.03em;margin-bottom:1.5rem;}
+    h1 em{font-style:italic;font-weight:300;color:var(--ink3);}
+    .hero-desc{max-width:520px;font-size:0.88rem;color:var(--ink3);line-height:1.9;margin-bottom:2.5rem;}
+    .hero-bar{display:flex;width:fit-content;margin-bottom:3rem;border:1px solid var(--border);}
+    .hb-item{padding:0.9rem 1.6rem;border-right:1px solid var(--border);background:var(--bg2);text-align:center;}
+    .hb-item:last-child{border-right:none;}
+    .hb-num{font-family:var(--sans);font-size:1.9rem;font-weight:900;color:var(--ink);line-height:1;display:block;}
+    .hb-num span{color:var(--red);}
+    .hb-lbl{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink4);display:block;margin-top:0.2rem;}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.6rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
+    .btn-primary{background:var(--red);color:var(--bg);}
+    .btn-primary:hover{background:var(--ink);}
+    .btn-outline{background:transparent;color:var(--ink3);border:1px solid var(--border2);}
+    .btn-outline:hover{border-color:var(--ink3);color:var(--ink);background:var(--bg2);}
+    .divider{max-width:1000px;margin:0 auto;height:1px;background:var(--border);}
+    .sec-head{margin-bottom:3rem;}
+    .sec-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;}
+    .sec-tag::before{content:'';width:20px;height:1px;background:var(--red);}
+    h2{font-family:var(--sans);font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--ink);letter-spacing:-0.02em;line-height:1;}
+    /* SKILLS */
+    #skills{background:linear-gradient(160deg,#fdf8f2 0%,#f5ede0 100%);border-top:1px solid rgba(192,40,26,0.08);border-bottom:1px solid rgba(192,40,26,0.08);max-width:100%;padding:6rem 0;}
+    #skills>.sec-head,#skills>.skills-categories{max-width:1000px;margin-left:auto;margin-right:auto;padding-left:4rem;padding-right:4rem;}
+    .skills-categories{display:flex;flex-direction:column;gap:2.5rem;}
+    .skill-category h3{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--red2);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px dashed rgba(192,40,26,0.25);}
+    .skills-grid{display:flex;flex-wrap:wrap;gap:0.75rem;}
+    .skill-chip{background:white;border:1.5px solid var(--border);border-radius:12px;padding:0.7rem 1rem;display:flex;align-items:center;gap:0.6rem;transition:transform 0.22s,box-shadow 0.22s,border-color 0.22s;cursor:default;}
+    .skill-chip:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(192,40,26,0.1);border-color:var(--red);}
+    .skill-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.88rem;flex-shrink:0;}
+    .icon-red{background:linear-gradient(135deg,var(--red-soft),#fce8e4);}
+    .icon-warm{background:linear-gradient(135deg,rgba(212,168,100,0.22),rgba(212,168,100,0.08));}
+    .icon-stone{background:linear-gradient(135deg,rgba(180,168,148,0.28),rgba(180,168,148,0.1));}
+    .icon-earth{background:linear-gradient(135deg,rgba(140,120,90,0.22),rgba(140,120,90,0.08));}
+    .skill-name{font-size:0.78rem;color:var(--ink2);}
+    /* EXPERIENCE */
+    .exp-list{display:flex;flex-direction:column;gap:1.5rem;}
+    .exp-card{padding:1.8rem 2rem;background:var(--bg2);border:1px solid var(--border);position:relative;transition:background 0.15s;}
+    .exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background 0.2s;}
+    .exp-card:hover{background:var(--surface);}
+    .exp-card:hover::before{background:var(--red);}
+    .exp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.2rem;}
+    .exp-role{font-family:var(--sans);font-size:1.1rem;font-weight:700;color:var(--ink);}
+    .exp-company{font-size:0.74rem;color:var(--red2);letter-spacing:0.05em;margin-bottom:0.9rem;}
+    .exp-date{font-size:0.65rem;color:var(--ink4);white-space:nowrap;letter-spacing:0.08em;}
+    .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
+    .exp-bullets li{font-size:0.78rem;color:var(--ink3);line-height:1.8;padding-left:1rem;position:relative;}
+    .exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--red);}
+    /* EDUCATION */
+    .edu-list{display:flex;flex-direction:column;}
+    .edu-card{padding:1.8rem 2rem;background:var(--bg2);border:1px solid var(--border);border-bottom:none;display:grid;grid-template-columns:1fr auto;gap:0.3rem 1.5rem;transition:background 0.15s;position:relative;}
+    .edu-card:last-child{border-bottom:1px solid var(--border);}
+    .edu-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background 0.2s;}
+    .edu-card:hover{background:var(--surface);}
+    .edu-card:hover::before{background:var(--red);}
+    .edu-degree{font-family:var(--sans);font-size:1.1rem;font-weight:700;color:var(--ink);}
+    .edu-school{font-size:0.74rem;color:var(--red2);letter-spacing:0.05em;margin-top:0.2rem;}
+    .edu-meta{font-size:0.74rem;color:var(--ink3);margin-top:0.5rem;grid-column:1/-1;}
+    .edu-year{font-size:0.65rem;letter-spacing:0.1em;color:var(--ink4);text-align:right;white-space:nowrap;grid-row:1;}
+    /* PROJECTS */
+    .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .proj-card{padding:1.4rem 1.6rem;background:var(--bg2);border:1px solid var(--border);transition:all 0.15s;position:relative;}
+    .proj-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background 0.2s;}
+    .proj-card:hover{background:var(--surface);}
+    .proj-card:hover::before{background:var(--red);}
+    .proj-name{font-family:var(--sans);font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem;}
+    .proj-desc{font-size:0.75rem;color:var(--ink3);line-height:1.8;}
+    /* CERTS */
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;border:1px solid var(--border);background:var(--border);}
+    .cert-card{background:var(--bg2);padding:1.4rem 1.6rem;display:flex;align-items:flex-start;gap:1rem;transition:background 0.15s;}
+    .cert-card:hover{background:var(--surface);}
+    .cert-idx{font-family:var(--sans);font-size:1.6rem;font-weight:900;font-style:italic;color:var(--border2);line-height:1;flex-shrink:0;margin-top:0.1rem;}
+    .cert-name{font-size:0.82rem;font-weight:500;color:var(--ink);line-height:1.4;}
+    .cert-issuer{font-size:0.68rem;color:var(--red2);margin-top:0.3rem;letter-spacing:0.05em;}
+    /* CONTACT */
+    .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+    .contact-head{font-family:var(--sans);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:0.75rem;}
+    .contact-sub{font-size:0.8rem;color:var(--ink3);line-height:1.9;margin-bottom:2rem;}
+    .contact-links{display:flex;flex-direction:column;gap:0.6rem;}
+    .clink{display:flex;align-items:center;gap:0.9rem;padding:0.7rem 1rem;border:1px solid var(--border);color:var(--ink3);text-decoration:none;font-size:0.78rem;background:var(--bg2);transition:all 0.15s;}
+    .clink:hover{border-color:var(--border2);color:var(--ink);background:var(--surface);}
+    .clink-dot{width:6px;height:6px;background:var(--red);flex-shrink:0;}
+    .form{display:flex;flex-direction:column;gap:1rem;}
+    .form-row{display:flex;flex-direction:column;gap:0.3rem;}
+    .form-label{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink3);}
+    .form-input{background:var(--bg2);border:1px solid var(--border);padding:0.65rem 0.9rem;font-family:var(--mono);font-size:0.8rem;color:var(--ink);outline:none;width:100%;transition:border-color 0.15s;}
+    .form-input:focus{border-color:var(--red);}
+    .form-input::placeholder{color:var(--border2);}
+    textarea.form-input{resize:vertical;min-height:110px;}
+    footer{max-width:1000px;margin:0 auto;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;font-size:0.68rem;color:var(--ink4);letter-spacing:0.08em;}
+    .fade{opacity:0;transform:translateY(16px);transition:opacity 0.65s ease,transform 0.65s ease;}
+    .fade.in{opacity:1;transform:none;}
+    /* RESUME */
+    .resume-wrapper{display:grid;grid-template-columns:1fr 1.7fr;gap:4rem;align-items:start;}
+    .resume-cta-block{display:flex;flex-direction:column;gap:1rem;}
+    .resume-cta-block p{font-size:0.82rem;color:var(--ink3);line-height:1.9;}
+    .resume-actions{display:flex;flex-direction:column;gap:0.7rem;margin-top:0.5rem;}
+    .resume-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:0.75rem;padding:0.85rem 1.2rem;border:1px solid var(--border2);background:var(--bg2);color:var(--ink2);text-decoration:none;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.08em;transition:all 0.2s;}
+    .resume-btn:hover{background:var(--surface);border-color:var(--ink3);color:var(--ink);}
+    .resume-btn.primary{background:var(--red);color:var(--bg);border-color:var(--red);}
+    .resume-btn.primary:hover{background:var(--red2);border-color:var(--red2);}
+    .resume-card{border:1px solid var(--border);background:var(--bg2);position:relative;overflow:hidden;}
+    .resume-card-header{background:var(--surface);border-bottom:1px solid var(--border);padding:0.65rem 1rem;display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);}
+    .rc-dot{width:8px;height:8px;border-radius:50%;background:var(--border2);}
+    .rc-dot.red{background:var(--red);}
+    .resume-preview{padding:1.5rem;display:flex;flex-direction:column;gap:1.1rem;}
+    .rp-name{font-family:var(--sans);font-size:1.5rem;font-weight:900;color:var(--ink);letter-spacing:-0.02em;}
+    .rp-title{font-size:0.7rem;color:var(--red2);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.1rem;}
+    .rp-contact-row{display:flex;flex-wrap:wrap;gap:0.5rem 1rem;margin-top:0.3rem;}
+    .rp-contact-item{font-size:0.65rem;color:var(--ink4);}
+    .rp-divider{height:1px;background:var(--border);}
+    .rp-section-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:0.55rem;display:flex;align-items:center;gap:0.5rem;}
+    .rp-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    .rp-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:0.1rem;}
+    .rp-role{font-size:0.76rem;font-weight:500;color:var(--ink);}
+    .rp-date{font-size:0.63rem;color:var(--ink4);white-space:nowrap;}
+    .rp-org{font-size:0.67rem;color:var(--red2);margin-bottom:0.35rem;}
+    .rp-bullet{font-size:0.67rem;color:var(--ink3);line-height:1.6;padding-left:0.8rem;position:relative;margin-bottom:0.15rem;}
+    .rp-bullet::before{content:'—';position:absolute;left:0;color:var(--red);font-size:0.6rem;}
+    .rp-chips{display:flex;flex-wrap:wrap;gap:0.4rem;}
+    .rp-chip{font-size:0.6rem;padding:0.15rem 0.5rem;border:1px solid var(--border);color:var(--ink3);background:var(--bg);}
+    .resume-overlay{position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to bottom,transparent,var(--bg2));pointer-events:none;}
+    @media(max-width:720px){
+      nav{padding:0 1.5rem;}
+      .nav-links{gap:1rem;}
+      section{padding:5rem 1.5rem;}
+      #skills>.sec-head,#skills>.skills-categories{padding-left:1.5rem;padding-right:1.5rem;}
+      .contact-wrap,.proj-grid,.resume-wrapper{grid-template-columns:1fr;}
+      footer{flex-direction:column;gap:0.5rem;padding:1.5rem;text-align:center;}
+      .hero-bar{flex-wrap:wrap;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Brendon <span>Vu</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-eyebrow">IT Analyst &amp; Data Analyst</div>
+  <h1>Brendon<br><em>Vu.</em></h1>
+  <p class="hero-desc">Computer Information Systems student at the University of Houston delivering data-driven insights and IT solutions across healthcare, education, and retail. Available May 2026.</p>
+  <div class="hero-bar">
+    <div class="hb-item"><span class="hb-num">3<span>+</span></span><span class="hb-lbl">Yrs exp.</span></div>
+    <div class="hb-item"><span class="hb-num">3.6</span><span class="hb-lbl">GPA</span></div>
+    <div class="hb-item"><span class="hb-num">4<span>K+</span></span><span class="hb-lbl">Devices deployed</span></div>
+    <div class="hb-item"><span class="hb-num">3</span><span class="hb-lbl">Certs</span></div>
+  </div>
+  <div class="hero-actions">
+    <a href="#contact" class="btn btn-primary">Get in touch &rarr;</a>
+    <a href="#experience" class="btn btn-outline">View experience</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="skills">
+  <div class="sec-head fade">
+    <div class="sec-tag">01 &mdash; Skills</div>
+    <h2>Technical stack</h2>
+  </div>
+  <div class="skills-categories fade">
+    <div class="skill-category">
+      <h3>Data &amp; Analysis</h3>
+      <div class="skills-grid">
+        <div class="skill-chip"><div class="skill-icon icon-red">&#x1F40D;</div><span class="skill-name">Python</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-red">&#x1F5C4;&#xFE0F;</div><span class="skill-name">SQL</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F4CA;</div><span class="skill-name">Excel</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F504;</div><span class="skill-name">Power Query</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F5C3;&#xFE0F;</div><span class="skill-name">MySQL</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-stone">&#x1F4E6;</div><span class="skill-name">ETL Processing</span></div>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h3>Visualization &amp; BI</h3>
+      <div class="skills-grid">
+        <div class="skill-chip"><div class="skill-icon icon-red">&#x26A1;</div><span class="skill-name">Power BI</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F4C9;</div><span class="skill-name">Tableau</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-stone">&#x1F4C8;</div><span class="skill-name">DAX</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-stone">&#x1F4CB;</div><span class="skill-name">Data Modeling</span></div>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h3>Cloud &amp; Infrastructure</h3>
+      <div class="skills-grid">
+        <div class="skill-chip"><div class="skill-icon icon-red">&#x2601;&#xFE0F;</div><span class="skill-name">AWS</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F510;</div><span class="skill-name">VPC / EC2 / RDS</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x2699;&#xFE0F;</div><span class="skill-name">Lambda / EventBridge</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-stone">&#x1F310;</div><span class="skill-name">HTML / Javascript</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-earth">&#x1F427;</div><span class="skill-name">Linux</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-earth">&#x1FA9F;</div><span class="skill-name">Windows</span></div>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h3>IT Support &amp; Tools</h3>
+      <div class="skills-grid">
+        <div class="skill-chip"><div class="skill-icon icon-red">&#x1F5A5;&#xFE0F;</div><span class="skill-name">Hardware Deployment</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F3AB;</div><span class="skill-name">Ticketing Systems</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F527;</div><span class="skill-name">Troubleshooting</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-stone">&#x1F4E6;</div><span class="skill-name">Office 365</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-earth">&#x1F916;</div><span class="skill-name">Artificial Intelligence</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-earth">&#x1F465;</div><span class="skill-name">Team Leadership</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="experience">
+  <div class="sec-head fade">
+    <div class="sec-tag">02 &mdash; Experience</div>
+    <h2>Work history</h2>
+  </div>
+  <div class="exp-list">
+    <div class="exp-card fade">
+      <div class="exp-top"><div class="exp-role">IT Analyst</div><div class="exp-date">Jan 2025 &ndash; Present</div></div>
+      <div class="exp-company">iMobileToyz, LLC &middot; Houston, TX</div>
+      <ul class="exp-bullets">
+        <li>Transformed raw sales, listings, fees, and customer data into structured Power BI datasets; reduced manual reporting latency by 35% using Power Query and advanced Excel.</li>
+        <li>Provided technical and financial analysis to support sales efforts with tailored hardware recommendations.</li>
+        <li>Streamlined CSV-to-database synchronization, saving 15+ labor hours per month.</li>
+      </ul>
+    </div>
+    <div class="exp-card fade">
+      <div class="exp-top"><div class="exp-role">IT Field Technician Intern</div><div class="exp-date">Jun 2025 &ndash; Aug 2025</div></div>
+      <div class="exp-company">YES Prep Schools &middot; Houston, TX</div>
+      <ul class="exp-bullets">
+        <li>Led a 4-intern team to deliver 4,000+ configured laptops across 20+ campuses, enabling digital learning for 100% of students.</li>
+        <li>Completed deployment 8 hours ahead of schedule &mdash; a 50% improvement in operational speed vs. prior year.</li>
+        <li>Resolved 150+ hardware and software tickets during peak deployment with a 95% first-contact resolution rate.</li>
+      </ul>
+    </div>
+    <div class="exp-card fade">
+      <div class="exp-top"><div class="exp-role">IT Help Desk Technician</div><div class="exp-date">Jan 2024 &ndash; Aug 2024</div></div>
+      <div class="exp-company">Pham Medical Clinic &middot; Houston, TX</div>
+      <ul class="exp-bullets">
+        <li>Provided technical support for desktops, laptops, printers, Wi-Fi, and mobile devices across the clinic.</li>
+        <li>Reduced average ticket resolution time by 30% by creating a standardized troubleshooting guide for common errors.</li>
+        <li>Managed inventory of 50+ devices, ensuring all staff electronics were functional and patched with latest security updates.</li>
+      </ul>
+    </div>
+    <div class="exp-card fade">
+      <div class="exp-top"><div class="exp-role">Sales Associate &amp; Trainer</div><div class="exp-date">Aug 2024 &ndash; Present</div></div>
+      <div class="exp-company">Uniqlo &middot; Sugar Land, TX</div>
+      <ul class="exp-bullets">
+        <li>Analyzed weekly sales reports to identify high-performing trends and inventory turnover; reconfigured store layouts to maximize floor profitability.</li>
+        <li>Mentored and trained new associates on product knowledge, sales practices, and customer service standards.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="education">
+  <div class="sec-head fade">
+    <div class="sec-tag">03 &mdash; Education</div>
+    <h2>Background</h2>
+  </div>
+  <div class="edu-list">
+    <div class="edu-card fade">
+      <div>
+        <div class="edu-degree">B.S. Computer Information Systems</div>
+        <div class="edu-school">University of Houston &middot; Minor in Business Administration</div>
+      </div>
+      <div class="edu-year">May 2026</div>
+      <div class="edu-meta">GPA 3.6 &nbsp;&middot;&nbsp; Dean&rsquo;s List 2022&ndash;2026</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="projects">
+  <div class="sec-head fade">
+    <div class="sec-tag">04 &mdash; Projects</div>
+    <h2>Selected work</h2>
+  </div>
+  <div class="proj-grid fade">
+    <div class="proj-card">
+      <div class="proj-name">AWS Cloud Book Website</div>
+      <div class="proj-desc">Multitier AWS web app utilizing VPC, EC2, RDS, Load Balancers, Auto Scaling, CloudFormation, Lambda, and EventBridge.</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-name">2025 Sales Report Dashboard</div>
+      <div class="proj-desc">Power BI dashboard analyzing store sales from Excel, listings, fees, and product performance using data modeling, DAX measures, and interactive visualizations.</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-name">E-Healthcare Management System</div>
+      <div class="proj-desc">3NF-compliant system deployed on AWS RDS with 30+ entities, using complex SQL logic to automate analysis and reporting.</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-name">Student Data Management</div>
+      <div class="proj-desc">Python sorting script filtering and segmenting students by GPA, major, and other attributes for downstream analysis.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="certifications">
+  <div class="sec-head fade">
+    <div class="sec-tag">05 &mdash; Certifications</div>
+    <h2>Credentials</h2>
+  </div>
+  <div class="cert-grid fade">
+    <div class="cert-card">
+      <div class="cert-idx">01</div>
+      <div><div class="cert-name">AWS Certified Cloud Practitioner</div><div class="cert-issuer">Amazon Web Services</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-idx">02</div>
+      <div><div class="cert-name">Tableau Desktop Foundations</div><div class="cert-issuer">Salesforce / Tableau</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-idx">03</div>
+      <div><div class="cert-name">Power BI Data Analyst Associate</div><div class="cert-issuer">Microsoft</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="sec-head fade">
+    <div class="sec-tag">06 — Resume</div>
+    <h2>Full résumé</h2>
+  </div>
+  <div class="resume-wrapper fade">
+    <div class="resume-cta-block">
+      <p>A complete overview of my experience, education, projects, and technical skills — all in one document.</p>
+      <div class="resume-actions">
+        <a href="resume.pdf" download class="resume-btn primary">↓ &nbsp;Download PDF</a>
+        <a href="resume.pdf" target="_blank" class="resume-btn">↗ &nbsp;Open in new tab</a>
+      </div>
+    </div>
+    <div class="resume-card">
+      <div class="resume-card-header">
+        <div class="rc-dot red"></div><div class="rc-dot"></div><div class="rc-dot"></div>
+        <span style="margin-left:0.3rem;">brendon_vu_resume.pdf</span>
+      </div>
+      <div class="resume-preview">
+        <div>
+          <div class="rp-name">Brendon Vu</div>
+          <div class="rp-title">IT Analyst · Data Analyst</div>
+          <div class="rp-contact-row">
+            <span class="rp-contact-item">Houston, TX</span>
+            <span class="rp-contact-item">brendontvu@gmail.com</span>
+            <span class="rp-contact-item">(832) 259-1880</span>
+            <span class="rp-contact-item">linkedin.com/in/brendontvu</span>
+          </div>
+        </div>
+        <div class="rp-divider"></div>
+        <div>
+          <div class="rp-section-label">Experience</div>
+          <div class="rp-row"><span class="rp-role">IT Analyst — iMobileToyz, LLC</span><span class="rp-date">Jan 2025 – Present</span></div>
+          <div class="rp-bullet">Reduced manual reporting latency 35% via Power BI &amp; Power Query.</div>
+          <div class="rp-bullet">Saved 15+ labor hours/month through CSV-to-database automation.</div>
+          <div class="rp-row" style="margin-top:0.6rem;"><span class="rp-role">IT Field Technician Intern — YES Prep</span><span class="rp-date">Jun – Aug 2025</span></div>
+          <div class="rp-bullet">Deployed 4,000+ laptops across 20+ campuses, 50% faster than prior year.</div>
+          <div class="rp-bullet">Resolved 150+ tickets at 95% first-contact resolution rate.</div>
+          <div class="rp-row" style="margin-top:0.6rem;"><span class="rp-role">IT Help Desk — Pham Medical Clinic</span><span class="rp-date">Jan – Aug 2024</span></div>
+          <div class="rp-bullet">Reduced ticket resolution time 30% via standardized troubleshooting guides.</div>
+        </div>
+        <div class="rp-divider"></div>
+        <div>
+          <div class="rp-section-label">Education</div>
+          <div class="rp-row"><span class="rp-role">B.Sc. Computer Information Systems — University of Houston</span><span class="rp-date">May 2026</span></div>
+          <div class="rp-org">Minor in Business Administration · GPA 3.6 · Dean's List 2022–2026</div>
+        </div>
+        <div class="rp-divider"></div>
+        <div>
+          <div class="rp-section-label">Certifications</div>
+          <div class="rp-org">AWS Cloud Practitioner · Tableau Desktop Foundations · Power BI Associate</div>
+        </div>
+        <div class="rp-divider"></div>
+        <div>
+          <div class="rp-section-label">Skills</div>
+          <div class="rp-chips">
+            <span class="rp-chip">Python</span><span class="rp-chip">SQL</span><span class="rp-chip">Power BI</span>
+            <span class="rp-chip">Tableau</span><span class="rp-chip">Excel</span><span class="rp-chip">AWS</span>
+            <span class="rp-chip">ETL</span><span class="rp-chip">DAX</span><span class="rp-chip">MySQL</span>
+            <span class="rp-chip">Linux</span><span class="rp-chip">HTML / JS</span>
+          </div>
+        </div>
+      </div>
+      <div class="resume-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact">
+  <div class="sec-head fade">
+    <div class="sec-tag">07 &mdash; Contact</div>
+    <h2>Let&rsquo;s work together</h2>
+  </div>
+  <div class="contact-wrap">
+    <div class="fade">
+      <p class="contact-head">Open to new opportunities.</p>
+      <p class="contact-sub">Graduating May 2026 and available for full-time roles, internships, and freelance data or IT projects. Based in Houston, TX. Response within 24 hours.</p>
+      <div class="contact-links">
+        <a href="mailto:brendontvu@gmail.com" class="clink"><div class="clink-dot"></div>brendontvu@gmail.com</a>
+        <a href="https://linkedin.com/in/brendontvu" target="_blank" class="clink"><div class="clink-dot"></div>linkedin.com/in/brendontvu</a>
+        <a href="tel:+18322591880" class="clink"><div class="clink-dot"></div>+1 (832) 259-1880</a>
+      </div>
+    </div>
+    <div class="fade">
+      <div class="form">
+        <div class="form-row"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"/></div>
+        <div class="form-row"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"/></div>
+        <div class="form-row"><label class="form-label">Subject</label><input type="text" class="form-input" placeholder="Project inquiry, collaboration..."/></div>
+        <div class="form-row"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell me about your project..."></textarea></div>
+        <button class="btn btn-primary" id="send-btn" style="align-self:flex-start">Send message &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+<footer>
+  <span>&copy; 2026 Brendon Vu &mdash; IT &amp; Data Analyst</span>
+  <span>Houston, TX</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.fade').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+    obs.observe(el);
+  });
+  document.querySelectorAll('#hero > *').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    el.style.transitionDelay = (i * 110 + 80) + 'ms';
+    setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, 50);
+  });
+  document.getElementById('send-btn').addEventListener('click', function() {
+    this.textContent = 'Sent \u2713';
+    this.style.background = '#2a5c38';
+    setTimeout(() => { this.textContent = 'Send message \u2192'; this.style.background = ''; }, 3000);
+  });
+</script>
+</body>
+</html>
