@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Brendon Vu — IT & Data Analyst</title>
+  <title>Brendon Vu, Technical Support Engineer &amp; Cloud Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -73,18 +73,19 @@
     .exp-date{font-size:0.65rem;color:var(--ink4);white-space:nowrap;letter-spacing:0.08em;}
     .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
     .exp-bullets li{font-size:0.78rem;color:var(--ink3);line-height:1.8;padding-left:1rem;position:relative;}
-    .exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--red);}
+    .exp-bullets li::before{content:'\2013';position:absolute;left:0;color:var(--red);}
     /* EDUCATION */
     .edu-list{display:flex;flex-direction:column;}
-    .edu-card{padding:1.8rem 2rem;background:var(--bg2);border:1px solid var(--border);border-bottom:none;display:grid;grid-template-columns:1fr auto;gap:0.3rem 1.5rem;transition:background 0.15s;position:relative;}
+    .edu-card{padding:1.8rem 2rem;background:var(--bg2);border:1px solid var(--border);border-bottom:none;transition:background 0.15s;position:relative;}
     .edu-card:last-child{border-bottom:1px solid var(--border);}
     .edu-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background 0.2s;}
     .edu-card:hover{background:var(--surface);}
     .edu-card:hover::before{background:var(--red);}
+    .edu-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;}
     .edu-degree{font-family:var(--sans);font-size:1.1rem;font-weight:700;color:var(--ink);}
     .edu-school{font-size:0.74rem;color:var(--red2);letter-spacing:0.05em;margin-top:0.2rem;}
-    .edu-meta{font-size:0.74rem;color:var(--ink3);margin-top:0.5rem;grid-column:1/-1;}
-    .edu-year{font-size:0.65rem;letter-spacing:0.1em;color:var(--ink4);text-align:right;white-space:nowrap;grid-row:1;}
+    .edu-meta{font-size:0.74rem;color:var(--ink3);margin-top:0.5rem;}
+    .edu-year{font-size:0.65rem;letter-spacing:0.1em;color:var(--ink4);text-align:right;white-space:nowrap;flex-shrink:0;}
     /* PROJECTS */
     .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
     .proj-card{padding:1.4rem 1.6rem;background:var(--bg2);border:1px solid var(--border);transition:all 0.15s;position:relative;}
@@ -93,6 +94,8 @@
     .proj-card:hover::before{background:var(--red);}
     .proj-name{font-family:var(--sans);font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem;}
     .proj-desc{font-size:0.75rem;color:var(--ink3);line-height:1.8;}
+    .proj-link{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.9rem;font-size:0.72rem;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--red);text-decoration:none;}
+    .proj-link:hover{text-decoration:underline;}
     /* CERTS */
     .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;border:1px solid var(--border);background:var(--border);}
     .cert-card{background:var(--bg2);padding:1.4rem 1.6rem;display:flex;align-items:flex-start;gap:1rem;transition:background 0.15s;}
@@ -102,19 +105,13 @@
     .cert-issuer{font-size:0.68rem;color:var(--red2);margin-top:0.3rem;letter-spacing:0.05em;}
     /* CONTACT */
     .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+    .contact-wrap-solo{grid-template-columns:1fr;max-width:560px;}
     .contact-head{font-family:var(--sans);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:0.75rem;}
     .contact-sub{font-size:0.8rem;color:var(--ink3);line-height:1.9;margin-bottom:2rem;}
     .contact-links{display:flex;flex-direction:column;gap:0.6rem;}
     .clink{display:flex;align-items:center;gap:0.9rem;padding:0.7rem 1rem;border:1px solid var(--border);color:var(--ink3);text-decoration:none;font-size:0.78rem;background:var(--bg2);transition:all 0.15s;}
     .clink:hover{border-color:var(--border2);color:var(--ink);background:var(--surface);}
     .clink-dot{width:6px;height:6px;background:var(--red);flex-shrink:0;}
-    .form{display:flex;flex-direction:column;gap:1rem;}
-    .form-row{display:flex;flex-direction:column;gap:0.3rem;}
-    .form-label{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink3);}
-    .form-input{background:var(--bg2);border:1px solid var(--border);padding:0.65rem 0.9rem;font-family:var(--mono);font-size:0.8rem;color:var(--ink);outline:none;width:100%;transition:border-color 0.15s;}
-    .form-input:focus{border-color:var(--red);}
-    .form-input::placeholder{color:var(--border2);}
-    textarea.form-input{resize:vertical;min-height:110px;}
     footer{max-width:1000px;margin:0 auto;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;font-size:0.68rem;color:var(--ink4);letter-spacing:0.08em;}
     .fade{opacity:0;transform:translateY(16px);transition:opacity 0.65s ease,transform 0.65s ease;}
     .fade.in{opacity:1;transform:none;}
@@ -144,7 +141,7 @@
     .rp-date{font-size:0.63rem;color:var(--ink4);white-space:nowrap;}
     .rp-org{font-size:0.67rem;color:var(--red2);margin-bottom:0.35rem;}
     .rp-bullet{font-size:0.67rem;color:var(--ink3);line-height:1.6;padding-left:0.8rem;position:relative;margin-bottom:0.15rem;}
-    .rp-bullet::before{content:'—';position:absolute;left:0;color:var(--red);font-size:0.6rem;}
+    .rp-bullet::before{content:'\2013';position:absolute;left:0;color:var(--red);font-size:0.6rem;}
     .rp-chips{display:flex;flex-wrap:wrap;gap:0.4rem;}
     .rp-chip{font-size:0.6rem;padding:0.15rem 0.5rem;border:1px solid var(--border);color:var(--ink3);background:var(--bg);}
     .resume-overlay{position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to bottom,transparent,var(--bg2));pointer-events:none;}
@@ -174,14 +171,14 @@
 </nav>
 
 <section id="hero">
-  <div class="hero-eyebrow">IT Analyst &amp; Data Analyst</div>
+  <div class="hero-eyebrow">Technical Support Engineer &amp; Cloud Developer</div>
   <h1>Brendon<br><em>Vu.</em></h1>
-  <p class="hero-desc">Computer Information Systems student at the University of Houston delivering data-driven insights and IT solutions across healthcare, education, and retail. Available May 2026.</p>
+  <p class="hero-desc">University of Houston graduate (B.S. Computer Information Systems) working as a Technical Support Engineer at Daktronics, with hands-on experience building AWS cloud infrastructure, data pipelines, and full-stack tools across IT support, cloud engineering, and business analytics.</p>
   <div class="hero-bar">
     <div class="hb-item"><span class="hb-num">3<span>+</span></span><span class="hb-lbl">Yrs exp.</span></div>
     <div class="hb-item"><span class="hb-num">3.6</span><span class="hb-lbl">GPA</span></div>
     <div class="hb-item"><span class="hb-num">4<span>K+</span></span><span class="hb-lbl">Devices deployed</span></div>
-    <div class="hb-item"><span class="hb-num">3</span><span class="hb-lbl">Certs</span></div>
+    <div class="hb-item"><span class="hb-num">5</span><span class="hb-lbl">Certs</span></div>
   </div>
   <div class="hero-actions">
     <a href="#contact" class="btn btn-primary">Get in touch &rarr;</a>
@@ -193,8 +190,8 @@
 
 <section id="skills">
   <div class="sec-head fade">
-    <div class="sec-tag">01 &mdash; Skills</div>
-    <h2>Technical stack</h2>
+    <div class="sec-tag">01</div>
+    <h2>Skills</h2>
   </div>
   <div class="skills-categories fade">
     <div class="skill-category">
@@ -232,10 +229,11 @@
       <h3>IT Support &amp; Tools</h3>
       <div class="skills-grid">
         <div class="skill-chip"><div class="skill-icon icon-red">&#x1F5A5;&#xFE0F;</div><span class="skill-name">Hardware Deployment</span></div>
-        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F3AB;</div><span class="skill-name">Ticketing Systems</span></div>
-        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F527;</div><span class="skill-name">Troubleshooting</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F3AB;</div><span class="skill-name">Salesforce</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F50D;</div><span class="skill-name">Wireshark</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-warm">&#x1F527;</div><span class="skill-name">Network Troubleshooting</span></div>
         <div class="skill-chip"><div class="skill-icon icon-stone">&#x1F4E6;</div><span class="skill-name">Office 365</span></div>
-        <div class="skill-chip"><div class="skill-icon icon-earth">&#x1F916;</div><span class="skill-name">Artificial Intelligence</span></div>
+        <div class="skill-chip"><div class="skill-icon icon-earth">&#x1F916;</div><span class="skill-name">AI/LLM Tools (Claude, ChatGPT, Gemini, Amazon Q)</span></div>
         <div class="skill-chip"><div class="skill-icon icon-earth">&#x1F465;</div><span class="skill-name">Team Leadership</span></div>
       </div>
     </div>
@@ -246,17 +244,26 @@
 
 <section id="experience">
   <div class="sec-head fade">
-    <div class="sec-tag">02 &mdash; Experience</div>
-    <h2>Work history</h2>
+    <div class="sec-tag">02</div>
+    <h2>Experience</h2>
   </div>
   <div class="exp-list">
     <div class="exp-card fade">
-      <div class="exp-top"><div class="exp-role">IT Analyst</div><div class="exp-date">Jan 2025 &ndash; Present</div></div>
+      <div class="exp-top"><div class="exp-role">Technical Support Engineer</div><div class="exp-date">Jun 2026 &ndash; Present</div></div>
+      <div class="exp-company">Daktronics &middot; Brookings, SD (Remote)</div>
+      <ul class="exp-bullets">
+        <li>Perform real-time troubleshooting and case management on 125+ cases per week using Salesforce and a proprietary AI guidance system, delivering root-cause analysis during critical outages for clients like Walmart Corporate, JPMorgan Chase, Royal Caribbean, and the NFL.</li>
+        <li>Troubleshoot complex network infrastructure with Command Prompt, Wireshark packet analysis, and ARP tables to resolve routing and configuration issues across 500+ endpoints.</li>
+        <li>Administer user accounts, permissions, and product health monitoring via the Venus Control Suite (VCS) cloud platform for multi-region support.</li>
+      </ul>
+    </div>
+    <div class="exp-card fade">
+      <div class="exp-top"><div class="exp-role">IT &amp; Cloud Support Analyst</div><div class="exp-date">Jan 2025 &ndash; Present</div></div>
       <div class="exp-company">iMobileToyz, LLC &middot; Houston, TX</div>
       <ul class="exp-bullets">
         <li>Transformed raw sales, listings, fees, and customer data into structured Power BI datasets; reduced manual reporting latency by 35% using Power Query and advanced Excel.</li>
+        <li>Built and maintain the AWS-hosted Sales Tracker web app to process sales data and streamline business workflow, synchronizing data exports with internal databases and saving 15+ labor hours per month.</li>
         <li>Provided technical and financial analysis to support sales efforts with tailored hardware recommendations.</li>
-        <li>Streamlined CSV-to-database synchronization, saving 15+ labor hours per month.</li>
       </ul>
     </div>
     <div class="exp-card fade">
@@ -264,7 +271,7 @@
       <div class="exp-company">YES Prep Schools &middot; Houston, TX</div>
       <ul class="exp-bullets">
         <li>Led a 4-intern team to deliver 4,000+ configured laptops across 20+ campuses, enabling digital learning for 100% of students.</li>
-        <li>Completed deployment 8 hours ahead of schedule &mdash; a 50% improvement in operational speed vs. prior year.</li>
+        <li>Completed deployment 8 hours ahead of schedule, a 50% improvement in operational speed vs. prior year.</li>
         <li>Resolved 150+ hardware and software tickets during peak deployment with a 95% first-contact resolution rate.</li>
       </ul>
     </div>
@@ -292,17 +299,19 @@
 
 <section id="education">
   <div class="sec-head fade">
-    <div class="sec-tag">03 &mdash; Education</div>
-    <h2>Background</h2>
+    <div class="sec-tag">03</div>
+    <h2>Education</h2>
   </div>
   <div class="edu-list">
     <div class="edu-card fade">
-      <div>
-        <div class="edu-degree">B.S. Computer Information Systems</div>
-        <div class="edu-school">University of Houston &middot; Minor in Business Administration</div>
+      <div class="edu-top">
+        <div>
+          <div class="edu-degree">B.S. Computer Information Systems</div>
+          <div class="edu-school">University of Houston &middot; Minor in Business Administration</div>
+        </div>
+        <div class="edu-year">Aug 2022 &ndash; May 2026</div>
       </div>
-      <div class="edu-year">May 2026</div>
-      <div class="edu-meta">GPA 3.6 &nbsp;&middot;&nbsp; Dean&rsquo;s List 2022&ndash;2026</div>
+      <div class="edu-meta">Overall GPA 3.6</div>
     </div>
   </div>
 </section>
@@ -311,25 +320,38 @@
 
 <section id="projects">
   <div class="sec-head fade">
-    <div class="sec-tag">04 &mdash; Projects</div>
-    <h2>Selected work</h2>
+    <div class="sec-tag">04</div>
+    <h2>Projects</h2>
   </div>
   <div class="proj-grid fade">
     <div class="proj-card">
-      <div class="proj-name">AWS Cloud Book Website</div>
-      <div class="proj-desc">Multitier AWS web app utilizing VPC, EC2, RDS, Load Balancers, Auto Scaling, CloudFormation, Lambda, and EventBridge.</div>
+      <div class="proj-name">iMobileToyz Sales Tracker</div>
+      <div class="proj-desc">Full-stack Flask web app, deployed on AWS EC2, that automates eBay sales tracking through a CSV-to-Google-Sheets pipeline. Auto-maps and imports CSV exports, supports full CRUD on sales records, and syncs everything to Google Sheets via the Sheets API, replacing manual data entry with a live, always-current view of sales performance for the business.</div>
+      <a class="proj-link" href="https://github.com/brenvu/Sales-Data-Tracker-Project" target="_blank" rel="noopener">View on GitHub &rarr;</a>
     </div>
     <div class="proj-card">
-      <div class="proj-name">2025 Sales Report Dashboard</div>
-      <div class="proj-desc">Power BI dashboard analyzing store sales from Excel, listings, fees, and product performance using data modeling, DAX measures, and interactive visualizations.</div>
+      <div class="proj-name">AWS Cloud Library Website</div>
+      <div class="proj-desc">Multitier library management system (Node.js/Express/EJS frontend, Python Flask REST API, and MySQL backend) deployed across a custom AWS VPC with EC2, RDS, Load Balancers, Auto Scaling, CloudFormation, Lambda, and EventBridge. Supports full CRUD for books, customers, and borrowings on real infrastructure-as-code deployment.</div>
+      <a class="proj-link" href="https://github.com/brenvu/library-project" target="_blank" rel="noopener">View on GitHub &rarr;</a>
     </div>
     <div class="proj-card">
       <div class="proj-name">E-Healthcare Management System</div>
-      <div class="proj-desc">3NF-compliant system deployed on AWS RDS with 30+ entities, using complex SQL logic to automate analysis and reporting.</div>
+      <div class="proj-desc">3NF-compliant relational database system deployed on AWS RDS, modeling 30+ entities across patients, providers, appointments, and billing. Complex SQL logic automates analysis and reporting that would otherwise require manual cross-referencing across tables.</div>
     </div>
     <div class="proj-card">
-      <div class="proj-name">Student Data Management</div>
-      <div class="proj-desc">Python sorting script filtering and segmenting students by GPA, major, and other attributes for downstream analysis.</div>
+      <div class="proj-name">Serverless CSV Data Pipeline on AWS</div>
+      <div class="proj-desc">Event-driven, fully serverless pipeline (S3 &rarr; Lambda &rarr; S3 &rarr; Glue &rarr; Athena) that ingests raw CSV uploads, validates and cleans them in Python/pandas, converts them to Parquet, and makes them instantly queryable via SQL. Drops incomplete records with an auditable row-count log, routes failures to an SQS dead-letter queue, and scales to zero idle cost, built and tested for effectively $0.</div>
+      <a class="proj-link" href="https://github.com/brenvu/Serverless-CSV-Data-Pipeline" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-name">Highly Available 3-Tier AWS Deployment</div>
+      <div class="proj-desc">Production-style deployment (custom VPC, Auto Scaling Group across two Availability Zones, an Application Load Balancer, and RDS) built to host a live site with real redundancy and failover. CloudWatch alarms, SNS alerts, and an EventBridge-triggered Lambda auto-remediate unhealthy instances within seconds, turning "highly available" into "actively self-monitoring."</div>
+      <a class="proj-link" href="https://github.com/brenvu/Highly-Available-3-Tier-Web-App" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-name">Tycoon (Persona 5 Royal Card Game)</div>
+      <div class="proj-desc">Browser-based multiplayer version of the Tycoon card game from Persona 5 Royal, built with Claude. Two to four players connect directly over a peer-to-peer link (PeerJS/WebRTC) using a 6-character room code, no server or account required, with the full house-rule set implemented (8 Stop, Revolution, 3&#9824; Reversal, card exchange, and ranked scoring).</div>
+      <a class="proj-link" href="https://github.com/brenvu/tycoon_webgame" target="_blank" rel="noopener">View on GitHub &rarr;</a>
     </div>
   </div>
 </section>
@@ -338,21 +360,29 @@
 
 <section id="certifications">
   <div class="sec-head fade">
-    <div class="sec-tag">05 &mdash; Certifications</div>
-    <h2>Credentials</h2>
+    <div class="sec-tag">05</div>
+    <h2>Certifications</h2>
   </div>
   <div class="cert-grid fade">
     <div class="cert-card">
       <div class="cert-idx">01</div>
-      <div><div class="cert-name">AWS Certified Cloud Practitioner</div><div class="cert-issuer">Amazon Web Services</div></div>
+      <div><div class="cert-name">AWS Solutions Architect &ndash; Associate</div><div class="cert-issuer">Amazon Web Services</div></div>
     </div>
     <div class="cert-card">
       <div class="cert-idx">02</div>
-      <div><div class="cert-name">Tableau Desktop Foundations</div><div class="cert-issuer">Salesforce / Tableau</div></div>
+      <div><div class="cert-name">AWS Certified Cloud Practitioner</div><div class="cert-issuer">Amazon Web Services</div></div>
     </div>
     <div class="cert-card">
       <div class="cert-idx">03</div>
+      <div><div class="cert-name">Tableau Desktop Foundations</div><div class="cert-issuer">Salesforce / Tableau</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-idx">04</div>
       <div><div class="cert-name">Power BI Data Analyst Associate</div><div class="cert-issuer">Microsoft</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-idx">05</div>
+      <div><div class="cert-name">AWS AI Practitioner <em style="font-style:italic;color:var(--ink4);">(In Progress)</em></div><div class="cert-issuer">Amazon Web Services</div></div>
     </div>
   </div>
 </section>
@@ -362,15 +392,15 @@
 <!-- RESUME -->
 <section id="resume">
   <div class="sec-head fade">
-    <div class="sec-tag">06 — Resume</div>
-    <h2>Full résumé</h2>
+    <div class="sec-tag">06</div>
+    <h2>Resume</h2>
   </div>
   <div class="resume-wrapper fade">
     <div class="resume-cta-block">
-      <p>A complete overview of my experience, education, projects, and technical skills — all in one document.</p>
+      <p>A complete overview of my experience, education, projects, and technical skills, all in one document.</p>
       <div class="resume-actions">
-        <a href="resume.pdf" download class="resume-btn primary">↓ &nbsp;Download PDF</a>
-        <a href="resume.pdf" target="_blank" class="resume-btn">↗ &nbsp;Open in new tab</a>
+        <a href="https://raw.githubusercontent.com/brenvu/brenvu.github.io/main/projects/BV%20Resume.pdf" download="BV_Resume.pdf" class="resume-btn primary">&darr; &nbsp;Download PDF</a>
+        <a href="https://github.com/brenvu/brenvu.github.io/blob/main/projects/BV%20Resume.pdf" target="_blank" rel="noopener" class="resume-btn">&#8599; &nbsp;Open in new tab</a>
       </div>
     </div>
     <div class="resume-card">
@@ -381,36 +411,34 @@
       <div class="resume-preview">
         <div>
           <div class="rp-name">Brendon Vu</div>
-          <div class="rp-title">IT Analyst · Data Analyst</div>
+          <div class="rp-title">Technical Support Engineer · Cloud Developer</div>
           <div class="rp-contact-row">
             <span class="rp-contact-item">Houston, TX</span>
             <span class="rp-contact-item">brendontvu@gmail.com</span>
-            <span class="rp-contact-item">(832) 259-1880</span>
             <span class="rp-contact-item">linkedin.com/in/brendontvu</span>
           </div>
         </div>
         <div class="rp-divider"></div>
         <div>
           <div class="rp-section-label">Experience</div>
-          <div class="rp-row"><span class="rp-role">IT Analyst — iMobileToyz, LLC</span><span class="rp-date">Jan 2025 – Present</span></div>
+          <div class="rp-row"><span class="rp-role">Technical Support Engineer &middot; Daktronics</span><span class="rp-date">Jun 2026 – Present</span></div>
+          <div class="rp-bullet">125+ cases/week root-cause troubleshooting for enterprise clients via Salesforce &amp; AI guidance system.</div>
+          <div class="rp-row" style="margin-top:0.6rem;"><span class="rp-role">IT &amp; Cloud Support Analyst &middot; iMobileToyz, LLC</span><span class="rp-date">Jan 2025 – Present</span></div>
           <div class="rp-bullet">Reduced manual reporting latency 35% via Power BI &amp; Power Query.</div>
           <div class="rp-bullet">Saved 15+ labor hours/month through CSV-to-database automation.</div>
-          <div class="rp-row" style="margin-top:0.6rem;"><span class="rp-role">IT Field Technician Intern — YES Prep</span><span class="rp-date">Jun – Aug 2025</span></div>
+          <div class="rp-row" style="margin-top:0.6rem;"><span class="rp-role">IT Field Technician Intern &middot; YES Prep</span><span class="rp-date">Jun – Aug 2025</span></div>
           <div class="rp-bullet">Deployed 4,000+ laptops across 20+ campuses, 50% faster than prior year.</div>
-          <div class="rp-bullet">Resolved 150+ tickets at 95% first-contact resolution rate.</div>
-          <div class="rp-row" style="margin-top:0.6rem;"><span class="rp-role">IT Help Desk — Pham Medical Clinic</span><span class="rp-date">Jan – Aug 2024</span></div>
-          <div class="rp-bullet">Reduced ticket resolution time 30% via standardized troubleshooting guides.</div>
         </div>
         <div class="rp-divider"></div>
         <div>
           <div class="rp-section-label">Education</div>
-          <div class="rp-row"><span class="rp-role">B.Sc. Computer Information Systems — University of Houston</span><span class="rp-date">May 2026</span></div>
-          <div class="rp-org">Minor in Business Administration · GPA 3.6 · Dean's List 2022–2026</div>
+          <div class="rp-row"><span class="rp-role">B.Sc. Computer Information Systems &middot; University of Houston</span><span class="rp-date">May 2026</span></div>
+          <div class="rp-org">Minor in Business Administration · GPA 3.6</div>
         </div>
         <div class="rp-divider"></div>
         <div>
           <div class="rp-section-label">Certifications</div>
-          <div class="rp-org">AWS Cloud Practitioner · Tableau Desktop Foundations · Power BI Associate</div>
+          <div class="rp-org">AWS Solutions Architect Associate · AWS Cloud Practitioner · Tableau Desktop Foundations · Power BI Associate · AWS AI Practitioner (In Progress)</div>
         </div>
         <div class="rp-divider"></div>
         <div>
@@ -419,7 +447,8 @@
             <span class="rp-chip">Python</span><span class="rp-chip">SQL</span><span class="rp-chip">Power BI</span>
             <span class="rp-chip">Tableau</span><span class="rp-chip">Excel</span><span class="rp-chip">AWS</span>
             <span class="rp-chip">ETL</span><span class="rp-chip">DAX</span><span class="rp-chip">MySQL</span>
-            <span class="rp-chip">Linux</span><span class="rp-chip">HTML / JS</span>
+            <span class="rp-chip">Linux</span><span class="rp-chip">HTML / JS</span><span class="rp-chip">Salesforce</span>
+            <span class="rp-chip">Wireshark</span>
           </div>
         </div>
       </div>
@@ -432,26 +461,16 @@
 
 <section id="contact">
   <div class="sec-head fade">
-    <div class="sec-tag">07 &mdash; Contact</div>
-    <h2>Let&rsquo;s work together</h2>
+    <div class="sec-tag">07</div>
+    <h2>Contact</h2>
   </div>
-  <div class="contact-wrap">
+  <div class="contact-wrap contact-wrap-solo">
     <div class="fade">
       <p class="contact-head">Open to new opportunities.</p>
-      <p class="contact-sub">Graduating May 2026 and available for full-time roles, internships, and freelance data or IT projects. Based in Houston, TX. Response within 24 hours.</p>
+      <p class="contact-sub">Currently a Technical Support Engineer at Daktronics, open to new opportunities in cloud engineering, IT, and data analytics. Based in Houston, TX. Response within 24 hours.</p>
       <div class="contact-links">
         <a href="mailto:brendontvu@gmail.com" class="clink"><div class="clink-dot"></div>brendontvu@gmail.com</a>
         <a href="https://linkedin.com/in/brendontvu" target="_blank" class="clink"><div class="clink-dot"></div>linkedin.com/in/brendontvu</a>
-        <a href="tel:+18322591880" class="clink"><div class="clink-dot"></div>+1 (832) 259-1880</a>
-      </div>
-    </div>
-    <div class="fade">
-      <div class="form">
-        <div class="form-row"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"/></div>
-        <div class="form-row"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"/></div>
-        <div class="form-row"><label class="form-label">Subject</label><input type="text" class="form-input" placeholder="Project inquiry, collaboration..."/></div>
-        <div class="form-row"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell me about your project..."></textarea></div>
-        <button class="btn btn-primary" id="send-btn" style="align-self:flex-start">Send message &rarr;</button>
       </div>
     </div>
   </div>
@@ -459,7 +478,7 @@
 
 <div class="divider"></div>
 <footer>
-  <span>&copy; 2026 Brendon Vu &mdash; IT &amp; Data Analyst</span>
+  <span>&copy; 2026 Brendon Vu, Technical Support Engineer &amp; Cloud Developer</span>
   <span>Houston, TX</span>
 </footer>
 
@@ -477,11 +496,6 @@
     el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
     el.style.transitionDelay = (i * 110 + 80) + 'ms';
     setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, 50);
-  });
-  document.getElementById('send-btn').addEventListener('click', function() {
-    this.textContent = 'Sent \u2713';
-    this.style.background = '#2a5c38';
-    setTimeout(() => { this.textContent = 'Send message \u2192'; this.style.background = ''; }, 3000);
   });
 </script>
 </body>
